@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+
+<suite name="Product tests" parallel="tests" thread-count="2">
+
+    <parameter name="browser" value="CHROME"/>
+    <parameter name="env" value="QA"/>
+    <parameter name="wait" value="10"/>
+    <parameter name="ScrShootName" value="login_ScreenShot"/>
+    <parameter name="ScrShootDesc" value="This description describe login"/>
+    <parameter name="yesOrNo" value="Yes"/>
+
+
+    <test name="Login valid user 1">
+        <parameter name="username" value="standard_user"/>
+        <parameter name="password" value="secret_sauce"/>
+        <parameter name="testType" value="positive"/>
+        <parameter name="expectedText" value="PRODUCTS"/>
+        <classes>
+            <class name="tests.SwagLabsTestLogin"/>
+        </classes>
+    </test>
+    <test name="Login valid user 2">
+        <parameter name="username" value="problem_user"/>
+        <parameter name="password" value="secret_sauce"/>
+        <parameter name="testType" value="positive"/>
+        <parameter name="expectedText" value="PRODUCTS"/>
+        <classes>
+            <class name="tests.SwagLabsTestLogin"/>
+        </classes>
+    </test>
+    <test name="Login valid user 3">
+        <parameter name="username" value="performance_glitch_user"/>
+        <parameter name="password" value="secret_sauce"/>
+        <parameter name="testType" value="positive"/>
+        <parameter name="expectedText" value="PRODUCTS"/>
+        <classes>
+            <class name="tests.SwagLabsTestLogin"/>
+        </classes>
+    </test>
+    <test name="Login invalid user 1">
+        <parameter name="username" value="locked_out_user"/>
+        <parameter name="password" value="secret_sauce"/>
+        <parameter name="testType" value="negative"/>
+        <parameter name="expectedText" value="Epic sadface: Sorry, this user has been locked out."/>
+        <classes>
+            <class name="tests.SwagLabsTestLogin"/>
+        </classes>
+    </test>
+    <test name="Login invalid user 2">
+        <parameter name="username" value="defdf"/>
+        <parameter name="password" value="secret_sauce"/>
+        <parameter name="testType" value="negative"/>
+        <parameter name="expectedText" value="Epic sadface: Username and password do not match any user in this service"/>
+        <classes>
+            <class name="tests.SwagLabsTestLogin"/>
+        </classes>
+    </test>
+    <test name="Login invalid user 3">
+        <parameter name="username" value=""/>
+        <parameter name="password" value="ewerwer"/>
+        <parameter name="testType" value="negative"/>
+        <parameter name="expectedText" value="Epic sadface: Username is required"/>
+        <classes>
+            <class name="tests.SwagLabsTestLogin"/>
+        </classes>
+    </test>
+    <test name="Logout and checking menu items">
+        <parameter name="username" value="standard_user"/>
+        <parameter name="password" value="secret_sauce"/>
+        <parameter name="testType" value="positive"/>
+        <parameter name="expectedText" value="PRODUCTS"/>
+        <parameter name="testLogType" value="positive"/>
+        <parameter name="logoutMessage" value="Login"/>
+        <classes>
+            <class name="tests.SwagLabsTestLogout"/>
+        </classes>
+    </test>
+    <test name="End to end scenario">
+        <parameter name="username" value="standard_user"/>
+        <parameter name="password" value="secret_sauce"/>
+        <parameter name="testType" value="positive"/>
+        <parameter name="expectedText" value="PRODUCTS"/>
+        <parameter name="testLogType" value="positive"/>
+        <parameter name="logoutMessage" value="Login"/>
+        <classes>
+            <class name="tests.SwagLabsTestEndToEnd"/>
+        </classes>
+    </test>
+
+</suite>
